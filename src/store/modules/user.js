@@ -46,8 +46,7 @@ const actions= {
                 mode: 'cors'
             }) 
             const json = await response.json()
-            console.log(json.token)
-            cookie.set('token', json.token, {expires:10*365})
+            cookie.set('token', json.token, {expires:(10*365)})
         }catch(e){
             console.log(e)
         }

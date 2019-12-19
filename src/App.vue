@@ -1,28 +1,36 @@
 <template>
-  <div id="app">
-    <NavBar/>
-    <router-view/>
-  </div>
+    <div id="app">
+        <Loading v-if="loading"/>
+        <NavBar/>
+        <router-view/>
+    </div>
 </template>
 
 
 <script>
 import NavBar from './components/NavBar'
+import Loading from './components/Loading'
 import {mapActions, mapGetters} from 'vuex'
 export default {
     name: 'App',
     components:{
-        NavBar
+        NavBar,
+        Loading
     },
     computed:{
         ...mapGetters(['getUser'])
     },
+    data(){
+        return{
+            loading: true
+        }
+    },
     methods:{
         ...mapActions(['fetchUser'])
     },
-    created(){  
-        this.fetchUser()
-        console.log(this.getUser)
+    async created(){
+        await this.fetchUser()
+        this.loading = false
     }
 }
 </script>
