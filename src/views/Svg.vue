@@ -1,12 +1,12 @@
 <template>
-    <div id="Product">
-        
+    <div id="Svg">
+        <h2>SVG</h2>
     </div>
 </template>
 
 <script>
 export default {
-    name: 'Product'
+    name: 'Svg'
 }
 </script>
 
