@@ -1,5 +1,5 @@
-import cookie from '../../utils/cookie/cookie'
-
+import cookie from 'js-cookie'
+import url from '../../utils/urls/urls'
 
 const state = {
     user: null
@@ -11,16 +11,46 @@ const getters= {
 
 const actions= {
     async fetchUser({commit}){
-        const cookieExistence = cookie.getCookie('token')
-        if(!cookieExistence){
+        const cookieCheck = cookie.get('token')
+        if(!cookieCheck){
             return // return if cookie doesnt exist
         }
-        const userUrl = ''
-        const response = await fetch(userUrl)
-        commit('setUser', response.data)
+        const urlSetup = url.user.userGet
+        const response = await fetch(urlSetup.url,{
+            method: urlSetup.method,
+            headers: new Headers({
+                'Authorization': cookieCheck
+            })
+        })
+        const user = await response.json()
+        commit('setUser', user)
     },
     async loginAndSet({commit}){
         
+    },
+    async signupAndSet({commit}, userInfo){
+        const {password, name, email} = userInfo
+        const bodyObj = JSON.stringify({
+            password,
+            name,
+            email
+        })
+        const urlSetup = url.user.userCreate
+        try{
+            const response = await fetch(urlSetup.url,{
+                method: urlSetup.method,
+                body: bodyObj,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                mode: 'cors'
+            }) 
+            const json = await response.json()
+            console.log(json.token)
+            cookie.set('token', json.token, {expires:10*365})
+        }catch(e){
+            console.log(e)
+        }
     }
 }
 

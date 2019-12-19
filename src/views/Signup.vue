@@ -1,7 +1,7 @@
 <template>
     <div id="Signup">
         <h2>Signup</h2>
-        <form>
+        <form @submit.prevent="handleSubmit"> 
             <div class="field">
                 <label>Name</label>
                 <input name="name" type="text" v-model="name">
@@ -24,6 +24,7 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 export default {
     name: 'Signup',
     data(){
@@ -35,7 +36,14 @@ export default {
         }
     },
     methods:{
-
+        ...mapActions(['signupAndSet']),
+        handleSubmit(){
+            this.signupAndSet({
+                password: this.password,
+                email: this.email,
+                name: this.name
+            })
+        }
     }
 }
 </script>
