@@ -15,6 +15,13 @@ export default {
         headerText:{
             type: String,
             required: true
+        },
+        styleObj:{
+            type: Object,
+            required: true
+        },
+        subText:{
+            type: String
         }
     }
 }
