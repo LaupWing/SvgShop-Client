@@ -67,7 +67,6 @@ router.beforeEach((to,from, next)=>{
             next()
         }
         else{
-            // No user signed in
             next({name: 'Login'})
         }
     }
