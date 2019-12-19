@@ -1,0 +1,8 @@
+state: {
+},
+mutations: {
+},
+actions: {
+},
+modules: {
+}
