@@ -1,14 +1,22 @@
-
-
 const state = {
 
 }
-const mutations=  {
+
+const getters= {
+
 }
 
 const actions= {
+
 }
 
-const modules= {
-    
+const mutations= {
+
+}
+
+export default {
+    state,
+    getters,
+    actions,
+    mutations
 }
