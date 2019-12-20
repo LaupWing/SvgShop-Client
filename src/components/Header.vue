@@ -1,6 +1,9 @@
 <template>
-    <header>
-
+    <header :style="{...styleObj, background: backgroundUrl}">
+        <div class="conten">
+            <h2>{{headerText}}</h2>
+            <p v-if="subText">{{subText}}</p>
+        </div>
     </header>
 </template>
 
@@ -8,7 +11,7 @@
 export default {
     name: 'Header',
     props:{
-        background:{
+        backgroundUrl:{
             type: String,
             required: true
         },
@@ -28,5 +31,8 @@ export default {
 </script>
 
 <style>
-
+header{
+    width: 100%;
+    height: 30vh;
+}
 </style>
