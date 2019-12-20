@@ -1,13 +1,21 @@
 <template>
-  <div class="about">
-    <h1>This is an about page</h1>
-  </div>
+    <div class="about">
+        <Header
+            :styleObj="{
+                background: 'url(https://image.flaticon.com/sprites/authors/smashicons.png)',
+            }"
+            headerText= 'About'   
+        />
+    </div>
 </template>
 
 <script>
+import Header from '../components/Header'
 export default {
-    name: 'About'
-
+    name: 'About',
+    components:{
+        Header
+    }
 }
 </script>
 

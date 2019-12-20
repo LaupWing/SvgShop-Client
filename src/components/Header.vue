@@ -1,6 +1,10 @@
 <template>
-    <header :style="{...styleObj, background: backgroundUrl}">
-        <div class="conten">
+    <header 
+        :style="{
+            ...styleObj,
+        }"
+    >
+        <div class="content">
             <h2>{{headerText}}</h2>
             <p v-if="subText">{{subText}}</p>
         </div>
@@ -11,10 +15,6 @@
 export default {
     name: 'Header',
     props:{
-        backgroundUrl:{
-            type: String,
-            required: true
-        },
         headerText:{
             type: String,
             required: true
@@ -34,5 +34,15 @@ export default {
 header{
     width: 100%;
     height: 30vh;
+    min-height: 250px;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+header h2{
+    padding: 30px 15px;
+    background: rgba(255,255,255,.8);
 }
 </style>
