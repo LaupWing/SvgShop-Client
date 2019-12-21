@@ -16,5 +16,14 @@ export default {
 </script>
 
 <style>
-
+#BackdropContainer{
+    width: 100vw;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+}
 </style>

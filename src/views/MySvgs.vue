@@ -1,5 +1,6 @@
 <template>
     <div id="My_Svgs">
+        <AddSvg/>
         <main>
             <Header
                 :styleObj="{
@@ -15,10 +16,13 @@
 
 <script>
 import Header from '../components/Header'
+import AddSvg from '../components/mySvgs/AddSvg/AddSvg'
+
 export default {
     name: 'Svgs',
     components:{
-        Header
+        Header,
+        AddSvg
     }
 }
 </script>

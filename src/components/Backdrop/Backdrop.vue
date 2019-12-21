@@ -15,7 +15,9 @@ export default {
     width: 100vw;
     height: 100vh;
     position: fixed;
-    z-index: 1000;
+    z-index: 100;
     background: rgba(0,0,0,.3);
+    top: 0;
+    left: 0;
 }
 </style>
