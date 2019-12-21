@@ -34,12 +34,13 @@ export default {
 header{
     width: 100%;
     height: 30vh;
-    min-height: 250px;
+    /* min-height: 250px; */
     background-size: cover;
     background-repeat: no-repeat;
     display: flex;
     justify-content: center;
     align-items: center;
+    margin: 10px 0;
 }
 header h2{
     padding: 30px 15px;

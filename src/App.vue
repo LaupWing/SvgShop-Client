@@ -48,6 +48,18 @@ export default {
     --lightBrown: #faf4e2;
 
 }
+button{
+    padding: 10px 15px;
+    background: var(--pinkish);
+    border-radius: 30px;
+    border: none;
+    color: white;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.35);
+    cursor: pointer;
+}
 a{
     text-decoration: none;
     color: black;
