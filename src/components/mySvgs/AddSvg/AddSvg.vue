@@ -1,5 +1,8 @@
 <template>
-    <BackdropContainer>
+    <BackdropContainer 
+        :toggleBackdrop="toggleAdd" 
+        :active="active"
+    >
         <div class="AddSvg">
 
         </div>
@@ -10,6 +13,16 @@
 import BackdropContainer from '../../Backdrop/BackdropContainer'
 export default {
     name: 'AddSvg',
+    props:{
+        toggleAdd:{
+            type: Function,
+            required: true
+        },
+        active:{
+            type: Boolean,
+            required: true
+        },
+    },
     components:{
         BackdropContainer
     },
@@ -17,9 +30,6 @@ export default {
         return{
 
         }
-    },
-    methods:{
-
     }
 }
 </script>

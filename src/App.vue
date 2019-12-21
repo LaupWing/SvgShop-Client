@@ -59,6 +59,7 @@ button{
     letter-spacing: 1px;
     box-shadow: 0px 0px 7px 0px rgba(0,0,0,0.35);
     cursor: pointer;
+    outline: none;
 }
 a{
     text-decoration: none;

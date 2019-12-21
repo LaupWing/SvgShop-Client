@@ -1,6 +1,6 @@
 <template>
     <div id="My_Svgs">
-        <AddSvg/>
+        <AddSvg :toggleAdd="toggleAdd" :active="addModal"/>
         <main>
             <Header
                 :styleObj="{
@@ -9,7 +9,7 @@
                 }"
                 headerText= 'My SVGs'
             />
-            <button>Add SVG</button>
+            <button @click="toggleAdd">Add SVG</button>
         </main>
     </div>
 </template>
@@ -23,6 +23,17 @@ export default {
     components:{
         Header,
         AddSvg
+    },
+    data(){
+        return{
+            addModal: false
+        }
+    },
+    methods:{
+        toggleAdd(){
+            console.log('toggle')
+            this.addModal = !this.addModal
+        }
     }
 }
 </script>
