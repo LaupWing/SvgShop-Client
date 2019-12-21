@@ -1,12 +1,21 @@
 <template>
     <div id="My_Svgs">
-        <h2>My SVGS</h2>
+        <Header
+            :styleObj="{
+                background: 'url(https://image.flaticon.com/sprites/authors/smashicons.png)',
+            }"
+            headerText= 'My SVGS'   
+        />
     </div>
 </template>
 
 <script>
+import Header from '../components/Header'
 export default {
-    name: 'Svgs'
+    name: 'Svgs',
+    components:{
+        Header
+    }
 }
 </script>
 

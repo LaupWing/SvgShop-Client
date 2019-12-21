@@ -44,5 +44,8 @@ header{
 header h2{
     padding: 30px 15px;
     background: rgba(255,255,255,.8);
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 </style>

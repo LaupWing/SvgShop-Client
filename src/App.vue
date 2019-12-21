@@ -41,9 +41,19 @@ export default {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
+    font-family: 'Open Sans', sans-serif;
+    --pinkish: #ff5693;
+    --white: #ffffff;
+    --brown: #f7e6ce;
+    --lightBrown: #faf4e2;
+
 }
 a{
     text-decoration: none;
     color: black;
+}
+main{
+    margin: auto;
+    max-width: 800px;
 }
 </style>

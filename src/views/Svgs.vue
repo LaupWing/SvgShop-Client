@@ -1,6 +1,8 @@
 <template>
     <div id="Svgs">
-        <h2>SVGS</h2>
+        <main>
+            <h2>All SVGS</h2>
+        </main>
     </div>
 </template>
 

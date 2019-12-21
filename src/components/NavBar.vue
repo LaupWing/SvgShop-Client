@@ -7,7 +7,7 @@
                 <router-link to="/about">About</router-link>
                 <router-link v-if="!getUser" to="/login">Login</router-link>
                 <router-link v-if="!getUser" to="/signup">Signup</router-link>
-                <router-link to="/svgs">SVGS</router-link>
+                <router-link to="/svgs">All SVGS</router-link>
                 <router-link v-if="getUser" to="/my_svgs">My SVGS</router-link>
             </ul>
         </div>
@@ -28,7 +28,6 @@ export default {
 #NavBar{
     padding: 20px 10px;
     width: 100%;
-    background: orange;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -42,5 +41,10 @@ export default {
 }
 #NavBar .nav-content a{
     margin: 0 15px;
+}
+#NavBar .nav-content a.router-link-exact-active{
+    color: var(--pinkish);
+    font-weight: 600;
+    border-bottom: solid 2px var(--pinkish);
 }
 </style>
