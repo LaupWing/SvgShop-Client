@@ -4,7 +4,7 @@
             <Header
                 :styleObj="{
                     background: 'url(https://image.flaticon.com/sprites/authors/smashicons.png)',
-                    height: '20vh',
+                    height: '15vh',
                 }"
                 headerText= 'All SVGs'
             />
