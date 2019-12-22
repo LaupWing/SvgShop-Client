@@ -1,6 +1,5 @@
 <template>
     <div class="card">
-        test
         <div class="svg-container" v-html="svgObj.code">
 
         </div>
@@ -17,7 +16,11 @@ export default {
         }
     },
     created(){
-        console.log(this.svgObj)
+        // console.log(this.svgObj)
+    },
+    mounted(){
+        console.dir(this.$el.querySelector('svg'))
+        console.dir(this.$el.querySelector('svg style'))
     }
 }
 </script>
