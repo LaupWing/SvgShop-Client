@@ -14,7 +14,6 @@
                 </div>
                 <div class="userInput">
                     <textarea placeholder="Paste Your SVG code" v-model="svg"></textarea>
-                    <textarea placeholder="Paste Your styles"></textarea>
                 </div>
             </div>
             <div class="buttons">
@@ -27,6 +26,7 @@
 
 <script>
 import BackdropContainer from '../../Backdrop/BackdropContainer'
+import cssParser from '../../../utils/stringParse/parceCSStext'
 export default {
     name: 'AddSvg',
     props:{
@@ -91,7 +91,7 @@ export default {
     border-radius: 0 0 5px 0;
 }
 .AddSvg .userInput{
-    width: 500px;
+    width: 400px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -120,15 +120,10 @@ export default {
     border: none;
     background: var(--lightBlack);
     height: 100%;
+    width: 100%;
 }
 .AddSvg textarea:focus{
     border: solid var(--pinkish) 2px;
-}
-.AddSvg textarea:first-of-type{
-    width: 65%;
-}
-.AddSvg textarea:last-of-type{
-    width: 30%;
 }
 .AddSvg .buttons{
     justify-content: center;
