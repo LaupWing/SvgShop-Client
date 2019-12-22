@@ -6,16 +6,19 @@
         <div class="AddSvg">
             <input class="title" type="text" placeholder="Title...">
             <div class="content">
-                <div class="output">
+                <div class="output" >
                     <div class="legend">Output</div>
+                    <div class="svg-container" v-html="svg">
+
+                    </div>
                 </div>
                 <div class="userInput">
-                    <textarea placeholder="Paste Your SVG code"></textarea>
+                    <textarea placeholder="Paste Your SVG code" v-model="svg"></textarea>
                     <textarea placeholder="Paste Your styles"></textarea>
                 </div>
             </div>
             <div class="buttons">
-                <button>cancel</button>
+                <button @click="toggleAdd">cancel</button>
                 <button>create</button>
             </div>
         </div>
@@ -41,7 +44,7 @@ export default {
     },
     data(){
         return{
-
+            svg:null
         }
     }
 }
@@ -71,6 +74,10 @@ export default {
     height: 400px;
     margin-right: 30px;
     position: relative;
+}
+.AddSvg .output .svg-container{
+    width: 100%;
+    height: 100%;
 }
 .AddSvg .output .legend{
     position: absolute;
