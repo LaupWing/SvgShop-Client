@@ -26,11 +26,6 @@ export default {
         checkActive(){
             return this.active ? 'active' : null
         }
-    },
-    methods:{
-    },
-    created(){
-        console.log(this.toggleBackdrop)
     }
 }
 </script>
@@ -48,8 +43,7 @@ export default {
     transform: translateY(-100vh);
     opacity: 0;
     position: fixed;
-    top: 30%;
-    margin: auto;
+    top: 15%;
     left: 0;
     right: 0;
     transition: .5s;
