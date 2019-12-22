@@ -7,12 +7,16 @@
             <input class="title" type="text" placeholder="Title...">
             <div class="content">
                 <div class="output">
-
+                    <div class="legend">Output</div>
                 </div>
                 <div class="userInput">
                     <textarea placeholder="Paste Your SVG code"></textarea>
                     <textarea placeholder="Paste Your styles"></textarea>
                 </div>
+            </div>
+            <div class="buttons">
+                <button>cancel</button>
+                <button>create</button>
             </div>
         </div>
     </BackdropContainer>
@@ -49,7 +53,7 @@ export default {
     background: white;
     z-index: 200;
     border-radius: 10px;
-    padding: 10px;
+    padding: 25px;
 }
 .AddSvg h2{
     padding: 10px;
@@ -58,17 +62,33 @@ export default {
 }
 .AddSvg .content{
     display: flex;
+    margin: 10px 0;
 }
 .AddSvg .output{
+    border: solid var(--pinkish) 2px;
+    border-radius: 5px;
     width: 400px;
+    height: 400px;
+    margin-right: 30px;
+    position: relative;
+}
+.AddSvg .output .legend{
+    position: absolute;
+    top: 0;
+    left: 0;
+    text-transform: uppercase;
+    font-size: .8rem;
+    background: var(--pinkish);
+    color: white;
+    padding: 5px 10px;
+    border-radius: 0 0 5px 0;
 }
 .AddSvg .userInput{
     width: 500px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin: 10px 0;
-    height: 300px;
+    height: 400px;
 }
 .AddSvg input{
     border-bottom: transparent 2px solid;
@@ -95,7 +115,6 @@ export default {
     height: 100%;
 }
 .AddSvg textarea:focus{
-    background: transparent;
     border: solid var(--pinkish) 2px;
 }
 .AddSvg textarea:first-of-type{
@@ -103,5 +122,12 @@ export default {
 }
 .AddSvg textarea:last-of-type{
     width: 30%;
+}
+.AddSvg .buttons{
+    justify-content: center;
+    display: flex;
+}
+.AddSvg .buttons button{
+    margin: 20px;
 }
 </style>
