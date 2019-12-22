@@ -10,6 +10,7 @@
                 headerText= 'My SVGs'
             />
             <button @click="toggleAdd">Add SVG</button>
+            <List :svgs='getUserSvgs'/>
         </main>
     </div>
 </template>
@@ -18,12 +19,13 @@
 import Header from '../components/Header'
 import AddSvg from '../components/mySvgs/AddSvg/AddSvg'
 import {mapActions, mapGetters} from 'vuex'
-
+import List from '@/components/mySvgs/List/List'
 export default {
     name: 'Svgs',
     components:{
         Header,
-        AddSvg
+        AddSvg,
+        List
     },
     computed:{
         ...mapGetters(['getUserSvgs'])
