@@ -29,12 +29,7 @@ const actions= {
         
     },
     async signupAndSet({commit}, userInfo){
-        const {password, name, email} = userInfo
-        const bodyObj = JSON.stringify({
-            password,
-            name,
-            email
-        })
+        const bodyObj = JSON.stringify(userInfo)
         const urlSetup = url.user.userCreate
         try{
             const response = await fetch(urlSetup.url,{

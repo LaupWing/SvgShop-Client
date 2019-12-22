@@ -11,6 +11,13 @@ const user = {
     },
     userSignup: '',
 }
+const svg = {
+    svgCreate: {
+        method: 'POST',
+        url: `${baseUrl}svg`
+    }
+}
 export default {
-    user
+    user,
+    svg
 }
