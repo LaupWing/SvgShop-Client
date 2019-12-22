@@ -17,6 +17,7 @@
 <script>
 import Header from '../components/Header'
 import AddSvg from '../components/mySvgs/AddSvg/AddSvg'
+import {mapActions, mapGetters} from 'vuex'
 
 export default {
     name: 'Svgs',
@@ -24,16 +25,26 @@ export default {
         Header,
         AddSvg
     },
+    computed:{
+        ...mapGetters(['getUserSvgs'])
+    },
     data(){
         return{
             addModal: false
         }
     },
     methods:{
+        ...mapActions(['getUserSvgsFromDB']),
         toggleAdd(){
             console.log('toggle')
             this.addModal = !this.addModal
         }
+    },
+    created(){
+        this.getUserSvgsFromDB()
+        setTimeout(()=>{
+            console.log(this.getUserSvgs)
+        },2000)
     }
 }
 </script>

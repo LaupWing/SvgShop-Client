@@ -15,6 +15,10 @@ const svg = {
     svgCreate: {
         method: 'POST',
         url: `${baseUrl}svg`
+    },
+    svgsUser:{
+        method: 'GET',
+        url: `${baseUrl}user/svg`
     }
 }
 export default {

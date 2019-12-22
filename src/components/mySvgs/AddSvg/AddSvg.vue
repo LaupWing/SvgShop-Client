@@ -77,22 +77,22 @@ export default {
         ...mapActions(['saveSvgToDB']),
         createSvg(){
             if(this.code && this.title){
-                this.code = null,
-                this.private = false,
-                this.title = null
-                this.toggleAdd()
                 this.saveSVG()
+                this.toggleAdd()
             }else{
                 this.feedback ='You need to set an svg'
             }
         },
-        saveSVG(){
+        async saveSVG(){
             const svgObj = {
                 private: this.private,
                 code: this.code,
                 name: this.title
             }
-            this.saveSvgToDB(svgObj)
+            await this.saveSvgToDB(svgObj)
+            this.code = null,
+            this.private = false,
+            this.title = null
         }
     }
 }
