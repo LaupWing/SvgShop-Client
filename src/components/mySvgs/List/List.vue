@@ -21,5 +21,9 @@ export default {
 </script>
 
 <style>
-
+#ListSvg{
+    display: flex;
+    flex-flow: row;
+    flex-wrap: wrap;
+}
 </style>
