@@ -33,9 +33,9 @@ export default {
                                 const splitted = classes[className][key]
                                     .replace(splitBy, '')
                                     .replace(')', '')
-                                const finalId = `url(#${this.idGenerator(splitted)})`
-                                el.style[key] = finalId
-                                continue
+                                // const finalId = `url(#${this.idGenerator(splitted)})`
+                                // el.style[key] = finalId
+                                // continue
                             }
                         }
                         el.style[key] = classes[className][key]
@@ -65,7 +65,7 @@ export default {
     },
     mounted(){
         this.deleteStyleElAndAddInline()
-        this.scopingStylesById()
+        // this.scopingStylesById()
     }
 }
 </script>
