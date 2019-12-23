@@ -78,7 +78,11 @@ a{
 }
 main{
     margin: auto;
-    max-width: 800px;
+    max-width: 900px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
 }
 
 /* Switch styling */

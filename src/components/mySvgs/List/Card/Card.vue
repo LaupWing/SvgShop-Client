@@ -8,7 +8,7 @@
 
 <script>
 import transform from "css-to-react-native-transform"
-
+import strings from '../../../../utils/stringParse/stringsManipulator'
 export default {
     name: 'Card',
     props:{
@@ -27,19 +27,45 @@ export default {
                 const els = svg.querySelectorAll(`.${className}`)
                 els.forEach(el=>{
                     for(const key in classes[className]){
-                        console.log(key, '=', classes[className][key])
+                        if(typeof classes[className][key]!=='number'){
+                            if(classes[className][key].startsWith('url')){
+                                const splitBy = 'url(#'
+                                const splitted = classes[className][key]
+                                    .replace(splitBy, '')
+                                    .replace(')', '')
+                                const finalId = `url(#${this.idGenerator(splitted)})`
+                                el.style[key] = finalId
+                                continue
+                            }
+                        }
                         el.style[key] = classes[className][key]
                     }
                 })
             }
             styleEl.remove()
+        },
+        scopingStylesById(){
+            const childs = Array.from(this.$el.querySelector('svg defs').children)
+            childs.forEach(child=>{
+                child.id = this.idGenerator(child.id)
+                if(child.href){
+                    console.log(child.id)
+                    child.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', child.id);
+                    // console.log(child.href)
+                    console.log(child.href)
+                }
+            })
+        },
+        idGenerator(id){
+            return `${strings.replaceWhiteSpaces(this.svgObj.name)}_${this.svgObj._id}_${id}`
         }
     },
     created(){
-        // console.log(this.svgObj)
+        console.log(this.svgObj)
     },
     mounted(){
         this.deleteStyleElAndAddInline()
+        this.scopingStylesById()
     }
 }
 </script>
