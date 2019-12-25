@@ -2,7 +2,7 @@
     <div id="Svg">
         <main>
             <a @click="$router.go(-1)">back</a>
-            <div class="loading-container" v-if="!getClickedSvg">
+            <div class="loading-container" v-if="!getClickedSvg || init">
                 <Loader/>
                 <p>Loading SVG</p>
             </div>
@@ -34,7 +34,17 @@ export default {
     },
     data(){
         return{
-            test: null
+            init: true
+        }
+    },
+    watch:{
+        getClickedSvg(newVal, oldVal){
+            if(!oldVal){
+                this.init = false
+            }
+            else if(oldVal._id !== newVal._id){
+                this.init = false
+            }
         }
     },
     computed:{
