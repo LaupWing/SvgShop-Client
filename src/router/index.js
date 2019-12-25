@@ -5,7 +5,7 @@ import About from '../views/About.vue'
 import Login from '../views/Login.vue'
 import Signup from '../views/Signup.vue'
 import Svgs from '../views/Svgs.vue'
-import Svg from '../views/Svg.vue'
+import SvgById from '../views/Svg.vue'
 import MySvgs from '../views/MySvgs.vue'
 import store from '../store/modules/user'
 Vue.use(VueRouter)
@@ -37,12 +37,9 @@ const routes = [
         component: Svgs
     },
     {
-        path: '/svg',
+        path: '/svg/:id',
         name: 'Svg',
-        component: Svg,
-        meta:{
-            requiresAuth: true
-        }
+        component: SvgById
     },
     {
         path: '/my_svgs',

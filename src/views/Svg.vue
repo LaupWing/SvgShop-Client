@@ -6,7 +6,7 @@
 
 <script>
 export default {
-    name: 'Svg'
+    name: 'SvgById'
 }
 </script>
 

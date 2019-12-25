@@ -11,14 +11,19 @@ const user = {
     },
     userSignup: '',
 }
+
 const svg = {
     svgCreate: {
         method: 'POST',
         url: `${baseUrl}svg`
     },
+    getSvgSingle: {
+        method: 'GET',
+        url: `${baseUrl}svg/`
+    },
     svgsUser:{
         method: 'GET',
-        url: `${baseUrl}user/svg`
+        url: `${baseUrl}user/svgs`
     }
 }
 export default {

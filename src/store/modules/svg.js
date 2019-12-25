@@ -3,7 +3,9 @@ import cookie from 'js-cookie'
 
 const state = {
     allSvg: [],
-    userSvgs: []
+    userSvgs: [],
+    singleSvg: null,
+    error: null
 }
 
 const getters= {
@@ -11,6 +13,20 @@ const getters= {
 }
 
 const actions= {
+    async getSingleSvg({commit}, id){
+        const urlSetup = url.svg.getSvgSingle
+
+        try{
+            const response = await fetch(`urlSetup.url${id}`,{
+                method: urlSetup.method,
+                mode: 'cors'
+            })
+            const json = await response.json()
+            commit('setSingleSvg', json)
+        }catch(e){
+            commit('setError', e)
+        }
+    },
     async saveSvgToDB({commit}, svgInfo){
         const bodyObj = JSON.stringify(svgInfo)
         const urlSetup = url.svg.svgCreate
@@ -30,7 +46,7 @@ const actions= {
             commit('setSvgList')
 
         }catch(e){
-            console.log(e)
+            commit('setError', e)
         }
     },
     async getUserSvgsFromDB({commit}){
@@ -58,6 +74,8 @@ const actions= {
 const mutations= {
     setSvgList: (state,svg)=> state.allSvg.push(svg),
     setUserSvgs: (state,svgs)=> (state.userSvgs = svgs),
+    setSingleSvg: (state,svg)=> (state.singleSvg = svg),
+    setError: (state,e)=> (state.error = e.message),
     
 }
 
