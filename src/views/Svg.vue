@@ -42,7 +42,7 @@ export default {
             if(!oldVal){
                 this.init = false
             }
-            else if(oldVal._id !== newVal._id){
+            else if(oldVal._id !== newVal._id  || oldVal._id === newVal._id){
                 this.init = false
             }
         }
