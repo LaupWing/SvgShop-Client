@@ -2,9 +2,12 @@
     <div id="Svg">
         <main>
             <a @click="$router.go(-1)">back</a>
-            <div class="content">
+            <div class="content" v-if="getClickedSvg" >
                 <h2>{{getClickedSvg.name}}</h2>
-                <div v-if="getClickedSvg" class="svg-container" v-html="getClickedSvg.code">
+                <div class="svg-container" v-html="getClickedSvg.code">
+
+                </div>
+                <div class="code-container" v-html="test">
 
                 </div>
             </div>
@@ -14,8 +17,17 @@
 
 <script>
 import {mapGetters, mapActions} from 'vuex'
+import hljs from 'highlight.js'
+import html from 'highlight.js/lib/languages/htmlbars'
+import 'highlight.js/styles/github.css';
+hljs.registerLanguage('html', html)
 export default {
     name: 'SvgById',
+    data(){
+        return{
+            test: null
+        }
+    },
     computed:{
         ...mapGetters(['getClickedSvg'])
     },
@@ -24,6 +36,10 @@ export default {
     },
     created(){
         this.getSingleSvg(this.$route.params.id)
+        setTimeout(()=>{
+            this.test = hljs.highlightAuto(this.getClickedSvg.code).value
+            console.log(highlightedCode)
+        },2000)
     }
 }
 </script>
