@@ -33,9 +33,9 @@ export default {
                                 const splitted = classes[className][key]
                                     .replace(splitBy, '')
                                     .replace(')', '')
-                                // const finalId = `url(#${this.idGenerator(splitted)})`
-                                // el.style[key] = finalId
-                                // continue
+                                const finalId = `url(#${this.idGenerator(splitted)})`
+                                el.style[key] = finalId
+                                continue
                             }
                         }
                         el.style[key] = classes[className][key]
@@ -48,11 +48,9 @@ export default {
             const childs = Array.from(this.$el.querySelector('svg defs').children)
             childs.forEach(child=>{
                 child.id = this.idGenerator(child.id)
-                if(child.href){
-                    console.log(child.id)
-                    child.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', child.id);
-                    // console.log(child.href)
-                    console.log(child.href)
+                if(child.href && child.href.baseVal !== ''){
+                    const xLinkVal = this.idGenerator(child.href.baseVal).replace('#', '')
+                    child.setAttributeNS('http://www.w3.org/1999/xlink', 'xlink:href', `#${xLinkVal}`)
                 }
             })
         },
@@ -65,7 +63,7 @@ export default {
     },
     mounted(){
         this.deleteStyleElAndAddInline()
-        // this.scopingStylesById()
+        this.scopingStylesById()
     }
 }
 </script>
