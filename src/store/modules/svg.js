@@ -9,19 +9,20 @@ const state = {
 }
 
 const getters= {
-    getUserSvgs: state => state.userSvgs
+    getUserSvgs: state => state.userSvgs,
+    getSingleSvg: state => state.singleSvg,
 }
 
 const actions= {
     async getSingleSvg({commit}, id){
         const urlSetup = url.svg.getSvgSingle
-
         try{
-            const response = await fetch(`urlSetup.url${id}`,{
+            const response = await fetch(`${urlSetup.url}${id}`,{
                 method: urlSetup.method,
                 mode: 'cors'
             })
             const json = await response.json()
+            console.log(json)
             commit('setSingleSvg', json)
         }catch(e){
             commit('setError', e)

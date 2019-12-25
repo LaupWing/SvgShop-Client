@@ -38,7 +38,7 @@ const routes = [
     },
     {
         path: '/svg/:id',
-        name: 'Svg',
+        name: 'SvgById',
         component: SvgById
     },
     {

@@ -1,12 +1,14 @@
 <template>
-    <div class="card">
-        <div class="svg-container" v-html="svgObj.code">
+    <router-link :to="{name:'SvgById', params:{id:svgObj._id}}">
+        <div class="card">
+            <div class="svg-container" v-html="svgObj.code">
 
+            </div>
+            <div class="more">
+                see more
+            </div>
         </div>
-        <div class="more">
-            see more
-        </div>
-    </div>
+    </router-link>
 </template>
 
 <script>
