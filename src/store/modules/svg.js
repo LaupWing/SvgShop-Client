@@ -10,7 +10,7 @@ const state = {
 
 const getters= {
     getUserSvgs: state => state.userSvgs,
-    getSingleSvg: state => state.singleSvg,
+    getClickedSvg: state => state.singleSvg,
 }
 
 const actions= {
@@ -22,7 +22,6 @@ const actions= {
                 mode: 'cors'
             })
             const json = await response.json()
-            console.log(json)
             commit('setSingleSvg', json)
         }catch(e){
             commit('setError', e)
