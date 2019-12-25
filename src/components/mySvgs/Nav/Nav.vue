@@ -22,7 +22,7 @@ export default {
 
 <style>
 #navMySvgs{
-    margin: 20px 0;
+    margin: 30px 0;
     width: 100%;
     display: flex;
     align-items: center;

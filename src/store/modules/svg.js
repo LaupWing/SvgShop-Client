@@ -43,7 +43,10 @@ const actions= {
                 mode: 'cors'
             }) 
             const json = await response.json()
-            commit('setSvgList')
+            commit('setList', {
+                svg:json.obj,
+                list:'userSvgs'
+            })
 
         }catch(e){
             commit('setError', e)
@@ -72,7 +75,9 @@ const actions= {
 }
 
 const mutations= {
-    setSvgList: (state,svg)=> state.allSvg.push(svg),
+    setList: (state,{svg,list})=> {
+        state[list].push(svg)
+    },
     setUserSvgs: (state,svgs)=> (state.userSvgs = svgs),
     setSingleSvg: (state,svg)=> (state.singleSvg = svg),
     setError: (state,e)=> (state.error = e.message),

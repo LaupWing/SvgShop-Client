@@ -47,9 +47,6 @@ export default {
     },
     created(){
         this.getUserSvgsFromDB()
-        setTimeout(()=>{
-            console.log(this.getUserSvgs)
-        },2000)
     }
 }
 </script>
