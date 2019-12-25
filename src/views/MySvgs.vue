@@ -10,6 +10,7 @@
                 headerText= 'My SVGs'
             />
             <button @click="toggleAdd">Add SVG</button>
+            <Nav/>
             <List :svgs='getUserSvgs'/>
         </main>
     </div>
@@ -17,6 +18,7 @@
 
 <script>
 import Header from '../components/Header'
+import Nav from '../components/mySvgs/Nav/Nav'
 import AddSvg from '../components/mySvgs/AddSvg/AddSvg'
 import {mapActions, mapGetters} from 'vuex'
 import List from '@/components/mySvgs/List/List'
@@ -25,7 +27,8 @@ export default {
     components:{
         Header,
         AddSvg,
-        List
+        List,
+        Nav
     },
     computed:{
         ...mapGetters(['getUserSvgs'])
@@ -52,7 +55,13 @@ export default {
 </script>
 
 <style>
+#My_Svgs header{
+    margin-bottom: 20px; 
+}
 #My_Svgs header h2{
     font-size: 1.5rem;
+}
+#My_Svgs button{
+    align-self: flex-start;
 }
 </style>

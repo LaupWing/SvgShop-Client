@@ -3,6 +3,9 @@
         <div class="svg-container" v-html="svgObj.code">
 
         </div>
+        <div class="more">
+            see more
+        </div>
     </div>
 </template>
 
@@ -78,10 +81,30 @@ export default {
     overflow: hidden;
     margin: 20px;
     border-radius: 10px;
+    position: relative;
+    cursor: pointer;
+    transition: .5s;
 }
-.svg-container,
-.svg-container svg{
+.card .svg-container,
+.card .svg-container svg{
     height: 100%;
 }
-
+.card .more{
+    padding: 5px 10px;
+    background: var(--pinkish);
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    color: white;
+    transition: .5s;
+    transform: translate(0,100%);
+}
+.card:hover{
+    transform: scale(1.02);
+    box-shadow: 0px 0px 15px 0px rgba(0,0,0,0.7);
+}
+.card:hover .more{
+    transform: translate(0,0);
+}
 </style>
