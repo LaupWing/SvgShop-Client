@@ -2,13 +2,17 @@
     <div id="Svg">
         <main>
             <a @click="$router.go(-1)">back</a>
-            <div class="content" v-if="getClickedSvg" >
+            <div class="loading-container" v-if="!getClickedSvg">
+                <Loader/>
+                <p>Loading SVG</p>
+            </div>
+            <div class="content" v-else >
                 <h2>{{getClickedSvg.name}}</h2>
                 <div class="svg-container" v-html="getClickedSvg.code">
 
                 </div>
-                <div class="code-container" v-html="test">
-
+                <div class="html code-container">
+                    <p>{{getClickedSvg.code}}</p>
                 </div>
             </div>
         </main>
@@ -19,10 +23,15 @@
 import {mapGetters, mapActions} from 'vuex'
 import hljs from 'highlight.js'
 import html from 'highlight.js/lib/languages/htmlbars'
+import Loader from '../components/UI/Loading'
 import 'highlight.js/styles/github.css';
 hljs.registerLanguage('html', html)
+hljs.configure({useBR:true,tabReplace:'    '})
 export default {
     name: 'SvgById',
+    components:{
+        Loader
+    },
     data(){
         return{
             test: null
@@ -32,14 +41,13 @@ export default {
         ...mapGetters(['getClickedSvg'])
     },
     methods:{
-        ...mapActions(['getSingleSvg'])
+        ...mapActions(['getSingleSvg']),
+        codeHiglighter(){
+            // return hljs.highlightAuto(this.getClickedSvg.code).value
+        }
     },
     created(){
         this.getSingleSvg(this.$route.params.id)
-        setTimeout(()=>{
-            this.test = hljs.highlightAuto(this.getClickedSvg.code).value
-            console.log(highlightedCode)
-        },2000)
     }
 }
 </script>
@@ -70,6 +78,29 @@ export default {
     border-bottom: 2px solid var(--pinkish);
     cursor: pointer;
     font-size: 1.2rem;
+    color: var(--pinkish);
+}
+#Svg .code-container{
+    max-height: 20vh;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    background: #eeee;
+    max-width: 100%;
+}
+#Svg .code-container .hljs-tag{
+    display: block;
+}
+#Svg .code-container .css{
+    display: block;
+    padding-left:30px; 
+}
+#Svg .loading-container{
+    height: 50vh;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    flex-direction: column;
     color: var(--pinkish);
 }
 </style>
