@@ -1,6 +1,7 @@
 <template>
     <router-link :to="{name:'SvgById', params:{id:svgObj._id}}">
         <div class="card">
+            <h2>{{svgObj.name}}</h2>
             <div class="svg-container" v-html="svgObj.code">
 
             </div>
@@ -76,10 +77,10 @@ export default {
 <style>
 .card{
     width: 250px;
-    height: 250px;
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
     overflow: hidden;
     margin: 20px;
     border-radius: 10px;
@@ -87,9 +88,17 @@ export default {
     cursor: pointer;
     transition: .5s;
 }
+.card h2{
+    background: var(--pinkish);
+    width: 100%;
+    padding: 5px;
+    text-align: center;
+    color: white;
+    font-size: 1rem;
+}
 .card .svg-container,
 .card .svg-container svg{
-    height: 100%;
+    height: 250px;
 }
 .card .more{
     padding: 5px 10px;
