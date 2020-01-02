@@ -2,7 +2,7 @@ import url from '../../utils/urls/urls'
 import cookie from 'js-cookie'
 
 const state = {
-    allSvg: [],
+    allSvgs: {},
     userSvgs: [],
     singleSvg: null,
     error: null
@@ -11,6 +11,7 @@ const state = {
 const getters= {
     getUserSvgs: state => state.userSvgs,
     getClickedSvg: state => state.singleSvg,
+    getAllSvgsObj: state => state.allSvgs
 }
 
 const actions= {
@@ -23,6 +24,19 @@ const actions= {
             })
             const json = await response.json()
             commit('setSingleSvg', json)
+        }catch(e){
+            commit('setError', e)
+        }
+    },
+    async getAllSvgs({commit}){
+        const urlSetup = url.svg.svgAll
+        try{
+            const response = await fetch(urlSetup.url,{
+                method: urlSetup.method,
+                mode: 'cors'
+            })
+            const json = await response.json()
+            commit('setAllSvgs', json)
         }catch(e){
             commit('setError', e)
         }
@@ -81,7 +95,7 @@ const mutations= {
     setUserSvgs: (state,svgs)=> (state.userSvgs = svgs),
     setSingleSvg: (state,svg)=> (state.singleSvg = svg),
     setError: (state,e)=> (state.error = e.message),
-    
+    setAllSvgs: (state, allObj) =>(state.allSvgs = allObj)
 }
 
 export default {

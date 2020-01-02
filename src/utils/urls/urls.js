@@ -13,6 +13,10 @@ const user = {
 }
 
 const svg = {
+    svgAll:{
+        method: 'GET',
+        url: `${baseUrl}svgs`
+    },
     svgCreate: {
         method: 'POST',
         url: `${baseUrl}svg`

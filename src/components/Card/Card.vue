@@ -14,7 +14,7 @@
 
 <script>
 import transform from "css-to-react-native-transform"
-import strings from '../../../../utils/stringParse/stringsManipulator'
+import strings from '@/utils/stringParse/stringsManipulator'
 export default {
     name: 'Card',
     props:{

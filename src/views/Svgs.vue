@@ -8,16 +8,36 @@
                 }"
                 headerText= 'All SVGs'
             />
+            <List 
+                v-if="getAllSvgsObj.docs" 
+                :svgs="getAllSvgsObj.docs"
+            />
         </main>
     </div>
 </template>
 
 <script>
 import Header from '../components/Header'
+import {mapActions, mapGetters} from 'vuex'
+import List from '../components/allSvgs/List'
+
 export default {
     name: 'Svgs',
     components:{
-        Header
+        Header,
+        List
+    },
+    computed:{
+        ...mapGetters(['getAllSvgsObj'])
+    },
+    methods:{
+        ...mapActions(['getAllSvgs'])
+    },
+    created(){
+        this.getAllSvgs()
+        setTimeout(()=>{
+            console.log(this.getAllSvgsObj)
+        },1000)
     }
 }
 </script>

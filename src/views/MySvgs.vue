@@ -41,7 +41,6 @@ export default {
     methods:{
         ...mapActions(['getUserSvgsFromDB']),
         toggleAdd(){
-            console.log('toggle')
             this.addModal = !this.addModal
         }
     },
