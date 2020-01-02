@@ -4,11 +4,11 @@
             <h1>SVGshop</h1>
             <ul>
                 <router-link to="/">Home</router-link>
-                <router-link to="/about">About</router-link>
                 <router-link v-if="!getUser" to="/login">Login</router-link>
                 <router-link v-if="!getUser" to="/signup">Signup</router-link>
                 <router-link to="/svgs">All SVGS</router-link>
                 <router-link v-if="getUser" to="/my_svgs">My SVGS</router-link>
+                <a @click.prevent="logout" v-if="getUser">Logout</a>
             </ul>
         </div>
     </nav>
@@ -20,6 +20,11 @@ export default {
     name:'NavBar',
     computed:{
         ...mapGetters(['getUser'])
+    },
+    methods:{
+        logout(){
+            console.log(this.getUser)
+        }
     }
 }
 </script>
@@ -41,6 +46,7 @@ export default {
 }
 #NavBar .nav-content a{
     margin: 0 15px;
+    cursor: pointer;
 }
 #NavBar .nav-content a.router-link-exact-active{
     color: var(--pinkish);

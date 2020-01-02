@@ -28,7 +28,7 @@ const actions= {
             commit('setError', e)
         }
     },
-    async getAllSvgs({commit}){
+    async fetchAllSvgs({commit}){
         const urlSetup = url.svg.svgAll
         try{
             const response = await fetch(urlSetup.url,{

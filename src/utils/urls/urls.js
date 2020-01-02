@@ -9,6 +9,10 @@ const user = {
         method: 'GET',
         url: `${baseUrl}user`
     },
+    userLogout:{
+        method: 'POST',
+        url: `${baseUrl}user/logout`
+    },
     userSignup: '',
 }
 

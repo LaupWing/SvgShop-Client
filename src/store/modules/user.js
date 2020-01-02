@@ -26,7 +26,8 @@ const actions= {
         commit('setUser', user)
     },
     async loginAndSet({commit}){
-        
+        cookie.remove('token')
+        commit('rmUser')
     },
     async signupAndSet({commit}, userInfo){
         const bodyObj = JSON.stringify(userInfo)
@@ -45,11 +46,16 @@ const actions= {
         }catch(e){
             console.log(e)
         }
+    },
+    async logoutUser({commit}){
+        console.log(this.user)
+        
     }
 }
 
 const mutations= {
-    setUser: (state,user)=>(state.user = user)
+    setUser: (state,user)=>(state.user = user),
+    rmUser: state => state.user = null
 }
 
 export default {

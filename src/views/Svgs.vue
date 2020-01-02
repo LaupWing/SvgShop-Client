@@ -31,13 +31,10 @@ export default {
         ...mapGetters(['getAllSvgsObj'])
     },
     methods:{
-        ...mapActions(['getAllSvgs'])
+        ...mapActions(['fetchAllSvgs'])
     },
     created(){
-        this.getAllSvgs()
-        setTimeout(()=>{
-            console.log(this.getAllSvgsObj)
-        },1000)
+        this.fetchAllSvgs()
     }
 }
 </script>
