@@ -13,6 +13,10 @@ const user = {
         method: 'POST',
         url: `${baseUrl}user/logout`
     },
+    userLogin:{
+        method: 'POST',
+        url: `${baseUrl}user/login`
+    },
     userSignup: '',
 }
 

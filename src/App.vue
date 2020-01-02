@@ -29,7 +29,11 @@ export default {
         ...mapActions(['fetchUser'])
     },
     async created(){
-        await this.fetchUser()
+        try{
+            await this.fetchUser()
+        }catch(e){
+            console.log(e)
+        }
         this.loading = false
         console.log(this.getUser)
     }

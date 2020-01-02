@@ -15,6 +15,7 @@ const actions= {
         if(!cookieCheck){
             return // return if cookie doesnt exist
         }
+        console.log(cookieCheck)
         try{
             const urlSetup = url.user.userGet
             const response = await fetch(urlSetup.url,{
@@ -23,12 +24,10 @@ const actions= {
                     'Authorization': cookieCheck
                 })
             })
-            if(response.status === 400){
-                throw new Error()
-            }
             const user = await response.json()
             commit('setUser', user)
         }catch(e){
+            console.log(e)
             commit('setUser', null)
         }
     },
@@ -44,10 +43,30 @@ const actions= {
             })
             const user = await response.json()
             cookie.remove('token')
-            commit('rmUser')
+            commit('setUser', null)
             return user
         }
         catch(e){
+            console.log(e)
+        }
+    },
+    async loginUser({commit}, userInfo){
+        const urlSetup = url.user.userLogin
+        const bodyObj = JSON.stringify(userInfo)
+        try{
+            const response = await fetch(urlSetup.url,{
+                method: urlSetup.method,
+                body: bodyObj,
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                mode: 'cors'
+            })
+            const json = await response.json()
+            console.log(json)
+            cookie.set('token', json.token, {expires:(10*365)})
+            commit('setUser', json)
+        }catch(e){
             console.log(e)
         }
     },
@@ -65,6 +84,7 @@ const actions= {
             }) 
             const json = await response.json()
             cookie.set('token', json.token, {expires:(10*365)})
+            commit('setUser', json)
         }catch(e){
             console.log(e)
         }
@@ -72,8 +92,7 @@ const actions= {
 }
 
 const mutations= {
-    setUser: (state,user)=>(state.user = user),
-    rmUser: state => state.user = null
+    setUser: (state,user)=>(state.user = user)
 }
 
 export default {
