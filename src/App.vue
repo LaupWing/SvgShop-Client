@@ -31,6 +31,7 @@ export default {
     async created(){
         await this.fetchUser()
         this.loading = false
+        console.log(this.getUser)
     }
 }
 </script>

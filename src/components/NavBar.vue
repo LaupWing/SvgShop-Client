@@ -4,10 +4,10 @@
             <h1>SVGshop</h1>
             <ul>
                 <router-link to="/">Home</router-link>
-                <router-link v-if="!getUser" to="/login">Login</router-link>
-                <router-link v-if="!getUser" to="/signup">Signup</router-link>
                 <router-link to="/svgs">All SVGS</router-link>
                 <router-link v-if="getUser" to="/my_svgs">My SVGS</router-link>
+                <router-link v-if="!getUser" to="/login">Login</router-link>
+                <router-link v-if="!getUser" to="/signup">Signup</router-link>
                 <a @click.prevent="logout" v-if="getUser">Logout</a>
             </ul>
         </div>
@@ -15,15 +15,18 @@
 </template>
 
 <script>
-import {mapGetters} from 'vuex'
+import {mapGetters, mapActions} from 'vuex'
 export default {
     name:'NavBar',
     computed:{
         ...mapGetters(['getUser'])
     },
     methods:{
-        logout(){
-            console.log(this.getUser)
+        ...mapActions(['logoutUser']),
+        async logout(){
+            const loggedOut = await this.logoutUser()
+            console.log(loggedOut)
+            this.$router.push('/')
         }
     }
 }
