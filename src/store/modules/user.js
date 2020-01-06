@@ -35,6 +35,7 @@ const actions= {
         const urlSetup = url.user.userLogout
         try{
             const cookieCheck = cookie.get('token')
+            console.log(cookieCheck)
             const response = await fetch(urlSetup.url,{
                 method: urlSetup.method,
                 headers: new Headers({
@@ -43,6 +44,7 @@ const actions= {
             })
             const user = await response.json()
             cookie.remove('token')
+            console.log('loggin out user')
             commit('setUser', null)
             return user
         }
