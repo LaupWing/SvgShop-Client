@@ -15,7 +15,6 @@ const actions= {
         if(!cookieCheck){
             return // return if cookie doesnt exist
         }
-        console.log(cookieCheck)
         try{
             const urlSetup = url.user.userGet
             const response = await fetch(urlSetup.url,{
@@ -35,7 +34,6 @@ const actions= {
         const urlSetup = url.user.userLogout
         try{
             const cookieCheck = cookie.get('token')
-            console.log(cookieCheck)
             const response = await fetch(urlSetup.url,{
                 method: urlSetup.method,
                 headers: new Headers({
@@ -44,7 +42,6 @@ const actions= {
             })
             const user = await response.json()
             cookie.remove('token')
-            console.log('loggin out user')
             commit('setUser', null)
             return user
         }
@@ -65,7 +62,6 @@ const actions= {
                 mode: 'cors'
             })
             const json = await response.json()
-            console.log(json)
             cookie.set('token', json.token, {expires:(10*365)})
             commit('setUser', json)
         }catch(e){
