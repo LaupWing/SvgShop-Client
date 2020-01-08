@@ -25,9 +25,10 @@ export default {
         ...mapActions(['logoutUser']),
         async logout(){
             const loggedOut = await this.logoutUser()
-            console.log(loggedOut)
-            console.log(this.getUser)
-            this.$router.push('/')
+            
+            if(this.$route.path !== '/'){
+                this.$router.push('/')
+            }
         }
     }
 }

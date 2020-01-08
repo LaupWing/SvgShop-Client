@@ -23,11 +23,12 @@ export default {
     },
     methods:{
         ...mapActions(['loginUser']),
-        loggingIn(){
-            this.loginUser({
+        async loggingIn(){
+            await this.loginUser({
                 email: this.email,
                 password: this.password
             })
+            this.$router.push('/my_svgs')
         }
     }
 }
